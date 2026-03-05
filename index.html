@@ -91,10 +91,10 @@ button.kotu { background-color: #d46a6a; color: white; position: relative; }
 <!-- 3 Mart -->
 <div class="blog-card">
   <p class="date">03 Mart 2026</p>
-  <p class="title">CI/CD Süreci: Jenkins & Portainer & Nginx</p>
-  <p class="content">Jenkins container’ını Docker ile başlattık ve Portainer’ı da çalıştırdık.</p>
-  <p class="issue">Hatalar / Karşılaşılan Zorluklar: Portainer tarayıcıda güvenlik / SSL hatası verdi.</p>
-  <p class="solution">Düzeltmeler / Çözümler: Nginx üzerinden gerekli izin ve sertifika ayarlarını yaparak sorunu çözdük.</p>
+  <p class="title">CI/CD Süreci: Jenkins & Docker</p>
+  <p class="content">Jenkins container’ını Docker ile başlattık, build pipeline çalıştırdık.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: Docker içinde Jenkins çalıştırırken `docker` komutu bulunamadı (OCI runtime exec failed).</p>
+  <p class="solution">Düzeltmeler / Çözümler: Docker CLI’yi container içinde kullanabilmek için doğru image ve volume mount ayarladık.</p>
   <div class="button-container">
     <span class="message-label">Yorumlar:</span>
     <span class="message"></span>
@@ -106,9 +106,9 @@ button.kotu { background-color: #d46a6a; color: white; position: relative; }
 <!-- 4 Mart -->
 <div class="blog-card">
   <p class="date">04 Mart 2026</p>
-  <p class="title">CI/CD Süreci: GitHub Repository Bağlantısı</p>
+  <p class="title">CI/CD Süreci: GitHub & Jenkins</p>
   <p class="content">Jenkins pipeline ile GitHub repository’den kod çektik ve build ettik.</p>
-  <p class="issue">Hatalar / Karşılaşılan Zorluklar: SSH key tanımlaması eksikti, Git pull başarısız oldu.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: SSH key eksik, Git pull başarısız oldu.</p>
   <p class="solution">Düzeltmeler / Çözümler: Sunucuda SSH key oluşturup GitHub’a ekledik, pipeline tekrar çalıştı.</p>
   <div class="button-container">
     <span class="message-label">Yorumlar:</span>
@@ -121,9 +121,24 @@ button.kotu { background-color: #d46a6a; color: white; position: relative; }
 <!-- 5 Mart -->
 <div class="blog-card">
   <p class="date">05 Mart 2026</p>
-  <p class="title">CI/CD Süreci: Build & Deploy</p>
+  <p class="title">CI/CD Süreci: Portainer & Nginx</p>
+  <p class="content">Portainer’ı tarayıcıda açtık ve Nginx üzerinden yönlendirme yaptık.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: Tarayıcıda SSL / güvenlik hatası verdi.</p>
+  <p class="solution">Düzeltmeler / Çözümler: Nginx üzerinden gerekli izin ve sertifika ayarlarını yaptık.</p>
+  <div class="button-container">
+    <span class="message-label">Yorumlar:</span>
+    <span class="message"></span>
+    <button class="guzel">Güzel</button>
+    <button class="kotu">Kötü</button>
+  </div>
+</div>
+
+<!-- 6 Mart -->
+<div class="blog-card">
+  <p class="date">06 Mart 2026</p>
+  <p class="title">CI/CD Süreci: HTML & Build</p>
   <p class="content">Pipeline build edildi ve deploy işlemi başlatıldı.</p>
-  <p class="issue">Hatalar / Karşılaşılan Zorluklar: HTML dosyalarında bozuk karakterler görüldü (Türkçe karakterler).</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: HTML dosyalarında bozuk karakterler (Türkçe karakterler) görüldü.</p>
   <p class="solution">Düzeltmeler / Çözümler: HTML dosyalarına &lt;meta charset="UTF-8"&gt; ekledik, sorunu çözdük.</p>
   <div class="button-container">
     <span class="message-label">Yorumlar:</span>
@@ -145,21 +160,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = card.querySelector('.message');
 
     kotuBtn.addEventListener('click', () => {
-      const maxX = window.innerWidth - kotuBtn.offsetWidth - 20;
-      const maxY = window.innerHeight - kotuBtn.offsetHeight - 20;
-      const randX = Math.floor(Math.random() * maxX);
-      const randY = Math.floor(Math.random() * maxY);
-      kotuBtn.style.position = 'absolute';
-      kotuBtn.style.left = randX + 'px';
-      kotuBtn.style.top = randY + 'px';
-      kotuBtn.disabled = true;
+      kotuBtn.style.display = 'none';
     });
 
-    guzelBtn.addEventListener('click', (e) => {
+    guzelBtn.addEventListener('click', () => {
       if (!message.innerHTML) {
         message.innerHTML = '❤️ Biliyordum! Teşekkürler';
-
-        // Kalp animasyonu
         const heart = document.createElement('div');
         heart.className = 'heart-fly';
         const rect = guzelBtn.getBoundingClientRect();
