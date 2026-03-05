@@ -1,89 +1,177 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sevgi'nin CI/CD Blogu</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(120deg, #f0e6d2, #c9b79c);
-      color: #333;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    h1 { color: #6b4226; font-size: 2.5em; }
-    .blog-card {
-      background-color: #fdf6f0;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 600px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: left;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-    .date { font-size: 0.85em; color: #888; margin-bottom: 8px; }
-    .title { font-size: 1.3em; color: #8c5e3c; margin-bottom: 10px; }
-    .content { margin-bottom: 8px; }
-    .issue { color: #d46a6a; font-weight: bold; margin-top: 8px; }
-    .solution { color: #2d6a4f; font-weight: bold; margin-top: 4px; }
-    footer { margin-top: 40px; font-size: 0.9em; color: #555; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sevgi'nin CI/CD Blogu</title>
+<style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(120deg, #f0e6d2, #c9b79c);
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  overflow-x: hidden;
+}
+h1 {
+  text-align: center;
+  color: #6b4226;
+  font-size: 2.5em;
+}
+.blog-card {
+  position: relative;
+  background-color: #fdf6f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+.date { font-size: 0.85em; color: #888; margin-bottom: 8px; }
+.title { font-size: 1.3em; color: #8c5e3c; margin-bottom: 10px; }
+.content { margin-bottom: 8px; }
+.issue { color: #d46a6a; font-weight: bold; margin-top: 8px; }
+.solution { color: #2d6a4f; font-weight: bold; margin-top: 4px; }
+.eran-yorum { font-weight: bold; color: #0b3d91; margin-bottom: 10px; font-size: 1em; }
+.button-container { margin-top: 10px; }
+button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+button.guzel { background-color: #2d6a4f; color: white; }
+button.kotu { background-color: #d46a6a; color: white; position: relative; }
+.message {
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #d97706;
+  font-weight: bold;
+}
+.heart {
+  color: red;
+  font-size: 1.5em;
+  margin-left: 5px;
+}
+/* Arka plan animasyon */
+@keyframes floatAnim {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+.anim-icon {
+  position: absolute;
+  font-size: 30px;
+  color: #555;
+  animation: floatAnim 4s ease-in-out infinite;
+  opacity: 0.3;
+}
+</style>
 </head>
 <body>
-  <h1>Sevgi'nin CI/CD Blogu</h1>
+<h1>Sevgi'nin CI/CD Blogu</h1>
 
-  <!-- 3 Mart -->
-  <div class="blog-card">
-    <p class="date">03 Mart 2026</p>
-    <p class="title">CI/CD Süreci: Jenkins & Portainer & Nginx</p>
-    <p class="content">Jenkins container’ını Docker ile başlattık ve Portainer’ı da çalıştırdık.</p>
-    <p class="issue">Hatalar / Karşılaşılan Zorluklar: Portainer tarayıcıda güvenlik / SSL hatası verdi.</p>
-    <p class="solution">Düzeltmeler / Çözümler: Nginx üzerinden gerekli izin ve sertifika ayarlarını yaparak sorunu çözdük.</p>
+<!-- Animasyonlu ikonlar -->
+<div class="anim-icon" style="top:50px; left:10px;">💻</div>
+<div class="anim-icon" style="top:200px; left:90%;">🖥️</div>
+<div class="anim-icon" style="top:400px; left:50px;">🖱️</div>
+<div class="anim-icon" style="top:600px; left:85%;">💾</div>
+
+<!-- 3 Mart -->
+<div class="blog-card">
+  <div class="eran-yorum">Ertan Bey Yorumu</div>
+  <p class="date">03 Mart 2026</p>
+  <p class="title">CI/CD Süreci: Jenkins & Portainer & Nginx</p>
+  <p class="content">Jenkins container’ını Docker ile başlattık ve Portainer’ı da çalıştırdık.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: Portainer tarayıcıda güvenlik / SSL hatası verdi.</p>
+  <p class="solution">Düzeltmeler / Çözümler: Nginx üzerinden gerekli izin ve sertifika ayarlarını yaparak sorunu çözdük.</p>
+  <div class="button-container">
+    <button class="guzel">Güzel</button>
+    <button class="kotu">Kötü</button>
   </div>
+  <div class="message"></div>
+</div>
 
-  <!-- 4 Mart -->
-  <div class="blog-card">
-    <p class="date">04 Mart 2026</p>
-    <p class="title">CI/CD Süreci: GitHub Repository Bağlantısı</p>
-    <p class="content">Jenkins pipeline ile GitHub repository’den kod çektik ve build ettik.</p>
-    <p class="issue">Hatalar / Karşılaşılan Zorluklar: SSH key tanımlaması eksikti, Git pull başarısız oldu.</p>
-    <p class="solution">Düzeltmeler / Çözümler: Sunucuda SSH key oluşturup GitHub’a ekledik, pipeline tekrar çalıştı.</p>
+<!-- 4 Mart -->
+<div class="blog-card">
+  <div class="eran-yorum">Ertan Bey Yorumu</div>
+  <p class="date">04 Mart 2026</p>
+  <p class="title">CI/CD Süreci: GitHub Repository Bağlantısı</p>
+  <p class="content">Jenkins pipeline ile GitHub repository’den kod çektik ve build ettik.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: SSH key tanımlaması eksikti, Git pull başarısız oldu.</p>
+  <p class="solution">Düzeltmeler / Çözümler: Sunucuda SSH key oluşturup GitHub’a ekledik, pipeline tekrar çalıştı.</p>
+  <div class="button-container">
+    <button class="guzel">Güzel</button>
+    <button class="kotu">Kötü</button>
   </div>
+  <div class="message"></div>
+</div>
 
-  <div class="blog-card">
-    <p class="date">04 Mart 2026</p>
-    <p class="title">CI/CD Süreci: Docker Container Çalıştırma</p>
-    <p class="content">Jenkins container’dan Docker container çalıştırmayı denedik.</p>
-    <p class="issue">Hatalar / Karşılaşılan Zorluklar: 'docker exec' hatası → container içinde docker CLI yoktu.</p>
-    <p class="solution">Düzeltmeler / Çözümler: Jenkins container’ını docker soket ile bağladık ve image’ı güncelledik.</p>
+<div class="blog-card">
+  <div class="eran-yorum">Ertan Bey Yorumu</div>
+  <p class="date">04 Mart 2026</p>
+  <p class="title">CI/CD Süreci: Docker Container Çalıştırma</p>
+  <p class="content">Jenkins container’dan Docker container çalıştırmayı denedik.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: 'docker exec' hatası → container içinde docker CLI yoktu.</p>
+  <p class="solution">Düzeltmeler / Çözümler: Jenkins container’ını docker soket ile bağladık ve image’ı güncelledik.</p>
+  <div class="button-container">
+    <button class="guzel">Güzel</button>
+    <button class="kotu">Kötü</button>
   </div>
+  <div class="message"></div>
+</div>
 
-  <!-- 5 Mart -->
-  <div class="blog-card">
-    <p class="date">05 Mart 2026</p>
-    <p class="title">CI/CD Süreci: Build & Deploy</p>
-    <p class="content">Pipeline build edildi ve deploy işlemi başlatıldı.</p>
-    <p class="issue">Hatalar / Karşılaşılan Zorluklar: HTML dosyalarında bozuk karakterler görüldü (Türkçe karakterler).</p>
-    <p class="solution">Düzeltmeler / Çözümler: HTML dosyalarına &lt;meta charset="UTF-8"&gt; ekledik, sorunu çözdük.</p>
+<!-- 5 Mart -->
+<div class="blog-card">
+  <div class="eran-yorum">Ertan Bey Yorumu</div>
+  <p class="date">05 Mart 2026</p>
+  <p class="title">CI/CD Süreci: Build & Deploy</p>
+  <p class="content">Pipeline build edildi ve deploy işlemi başlatıldı.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: HTML dosyalarında bozuk karakterler görüldü (Türkçe karakterler).</p>
+  <p class="solution">Düzeltmeler / Çözümler: HTML dosyalarına &lt;meta charset="UTF-8"&gt; ekledik, sorunu çözdük.</p>
+  <div class="button-container">
+    <button class="guzel">Güzel</button>
+    <button class="kotu">Kötü</button>
   </div>
+  <div class="message"></div>
+</div>
 
-  <footer>&copy; 2026 Sevgi Nur Köseoğlu | DevOps Yolculuğu</footer>
+<footer>&copy; 2026 Sevgi Nur Köseoğlu | DevOps Yolculuğu</footer>
 
-  <script>
-    // Fade-in efekt
-    document.addEventListener("DOMContentLoaded", () => {
-      const cards = document.querySelectorAll('.blog-card');
-      cards.forEach((card, i) => {
-        card.style.opacity = 0;
-        setTimeout(() => {
-          card.style.transition = "opacity 0.6s ease-in";
-          card.style.opacity = 1;
-        }, i * 200);
-      });
+<script>
+// Hover fade-in ve button etkileşimi
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll('.blog-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = 0;
+    setTimeout(() => {
+      card.style.transition = "opacity 0.6s ease-in";
+      card.style.opacity = 1;
+    }, i * 200);
+
+    const guzelBtn = card.querySelector('button.guzel');
+    const kotuBtn = card.querySelector('button.kotu');
+    const message = card.querySelector('.message');
+
+    kotuBtn.addEventListener('click', () => {
+      kotuBtn.style.position = 'absolute';
+      kotuBtn.style.left = '-100px';
+      kotuBtn.disabled = true;
     });
-  </script>
+
+    guzelBtn.addEventListener('click', () => {
+      message.innerHTML = '❤️ Biliyordum! Teşekkürler';
+    });
+  });
+});
+</script>
 </body>
 </html>
