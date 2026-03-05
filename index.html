@@ -3,65 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Merhaba Jenkins</title>
+  <title>Sevgi'nin CI/CD Blogu</title>
   <style>
-    /* Genel stil */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(120deg, #f0e6d2, #c9b79c);
       color: #333;
       text-align: center;
-      padding: 50px;
+      padding: 40px 20px;
     }
-
-    h1 {
-      font-size: 3em;
-      color: #6b4226;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.2em;
-      line-height: 1.5;
+    h1 { color: #6b4226; font-size: 2.5em; }
+    .blog-card {
+      background-color: #fdf6f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
       max-width: 600px;
-      margin: 0 auto 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .highlight {
-      color: #d46a6a;
-      font-weight: bold;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 25px;
-      background-color: #8c5e3c;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #6b4226;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #555;
-    }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+    .date { font-size: 0.85em; color: #888; margin-bottom: 8px; }
+    .title { font-size: 1.3em; color: #8c5e3c; margin-bottom: 10px; }
+    .content { margin-bottom: 8px; }
+    .notes { font-size: 0.9em; color: #555; font-style: italic; }
+    footer { margin-top: 40px; font-size: 0.9em; color: #555; }
   </style>
 </head>
 <body>
-  <h1>Merhaba Jenkins!</h1>
-  <p>Bu site <span class="highlight">tamamen otomatik</span> olarak senin sunucuna yüklendi!</p>
-  <p>Kodexis DevOps yolculuğunda bir adım daha attık. 🚀</p>
-  <a href="#" class="button">Projeyi İncele</a>
+  <h1>Sevgi'nin CI/CD Blogu</h1>
 
-  <footer>
-    &copy; 2026 Sevgi Nur Köseoğlu
-  </footer>
+  <div class="blog-card">
+    <p class="date">05 Mart 2026</p>
+    <p class="title">Jenkins ile İlk Pipeline</p>
+    <p class="content">Pipeline oluşturup GitHub’dan kod çektik ve build ettik.</p>
+    <p class="notes">Not: Bozuk karakter hatası çıktı → &lt;meta charset="UTF-8"&gt; ekleyerek çözdüm.</p>
+  </div>
+
+  <div class="blog-card">
+    <p class="date">06 Mart 2026</p>
+    <p class="title">Docker Container</p>
+    <p class="content">Node.js uygulamasını Docker container’da çalıştırdım.</p>
+    <p class="notes">Not: 'docker exec' hatası → container içinde docker CLI yoktu, image güncelledim.</p>
+  </div>
+
+  <div class="blog-card">
+    <p class="date">07 Mart 2026</p>
+    <p class="title">GitHub Actions Workflow</p>
+    <p class="content">Otomatik build & deploy denedim.</p>
+    <p class="notes">Not: Yaml syntax hatası → workflow fail oldu, düzelttim ve çalıştı.</p>
+  </div>
+
+  <footer>&copy; 2026 Sevgi Nur Köseoğlu | DevOps Yolculuğu</footer>
+
+  <script>
+    // Fade-in efekt
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll('.blog-card');
+      cards.forEach((card, i) => {
+        card.style.opacity = 0;
+        setTimeout(() => {
+          card.style.transition = "opacity 0.6s ease-in";
+          card.style.opacity = 1;
+        }, i * 200);
+      });
+    });
+  </script>
 </body>
 </html>
