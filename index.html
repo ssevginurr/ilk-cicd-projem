@@ -12,7 +12,10 @@
       text-align: center;
       padding: 40px 20px;
     }
-    h1 { color: #6b4226; font-size: 2.5em; }
+    h1 {
+      color: #6b4226;
+      font-size: 2.5em;
+    }
     .blog-card {
       background-color: #fdf6f0;
       border-radius: 12px;
@@ -23,12 +26,38 @@
       text-align: left;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-    .date { font-size: 0.85em; color: #888; margin-bottom: 8px; }
-    .title { font-size: 1.3em; color: #8c5e3c; margin-bottom: 10px; }
-    .content { margin-bottom: 8px; }
-    .notes { font-size: 0.9em; color: #555; font-style: italic; }
-    footer { margin-top: 40px; font-size: 0.9em; color: #555; }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .date {
+      font-size: 0.85em;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .title {
+      font-size: 1.3em;
+      color: #8c5e3c;
+      margin-bottom: 10px;
+    }
+    .content {
+      margin-bottom: 8px;
+    }
+    .issue {
+      color: #d46a6a; /* kırmızı ton hatalar için */
+      font-weight: bold;
+      margin-top: 8px;
+    }
+    .solution {
+      color: #2d6a4f; /* yeşil ton çözüm için */
+      font-weight: bold;
+      margin-top: 4px;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -36,23 +65,26 @@
 
   <div class="blog-card">
     <p class="date">05 Mart 2026</p>
-    <p class="title">Jenkins ile İlk Pipeline</p>
+    <p class="title">CI/CD Süreci: Jenkins Pipeline</p>
     <p class="content">Pipeline oluşturup GitHub’dan kod çektik ve build ettik.</p>
-    <p class="notes">Not: Bozuk karakter hatası çıktı → &lt;meta charset="UTF-8"&gt; ekleyerek çözdüm.</p>
+    <p class="issue">Hatalar / Karşılaşılan Zorluklar: Bozuk karakterler çıktı.</p>
+    <p class="solution">Düzeltmeler / Çözümler: &lt;meta charset="UTF-8"&gt; ekledim, sorunu çözdüm.</p>
   </div>
 
   <div class="blog-card">
     <p class="date">06 Mart 2026</p>
-    <p class="title">Docker Container</p>
+    <p class="title">CI/CD Süreci: Docker Container</p>
     <p class="content">Node.js uygulamasını Docker container’da çalıştırdım.</p>
-    <p class="notes">Not: 'docker exec' hatası → container içinde docker CLI yoktu, image güncelledim.</p>
+    <p class="issue">Hatalar / Karşılaşılan Zorluklar: 'docker exec' hatası, container içinde docker CLI yoktu.</p>
+    <p class="solution">Düzeltmeler / Çözümler: Image güncelledim ve sorunu çözdüm.</p>
   </div>
 
   <div class="blog-card">
     <p class="date">07 Mart 2026</p>
-    <p class="title">GitHub Actions Workflow</p>
+    <p class="title">CI/CD Süreci: GitHub Actions Workflow</p>
     <p class="content">Otomatik build & deploy denedim.</p>
-    <p class="notes">Not: Yaml syntax hatası → workflow fail oldu, düzelttim ve çalıştı.</p>
+    <p class="issue">Hatalar / Karşılaşılan Zorluklar: Yaml syntax hatası → workflow fail oldu.</p>
+    <p class="solution">Düzeltmeler / Çözümler: Syntax hatasını düzelttim, workflow çalıştı.</p>
   </div>
 
   <footer>&copy; 2026 Sevgi Nur Köseoğlu | DevOps Yolculuğu</footer>
