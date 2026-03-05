@@ -12,10 +12,7 @@
       text-align: center;
       padding: 40px 20px;
     }
-    h1 {
-      color: #6b4226;
-      font-size: 2.5em;
-    }
+    h1 { color: #6b4226; font-size: 2.5em; }
     .blog-card {
       background-color: #fdf6f0;
       border-radius: 12px;
@@ -26,65 +23,51 @@
       text-align: left;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .blog-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-    .date {
-      font-size: 0.85em;
-      color: #888;
-      margin-bottom: 8px;
-    }
-    .title {
-      font-size: 1.3em;
-      color: #8c5e3c;
-      margin-bottom: 10px;
-    }
-    .content {
-      margin-bottom: 8px;
-    }
-    .issue {
-      color: #d46a6a; /* kırmızı ton hatalar için */
-      font-weight: bold;
-      margin-top: 8px;
-    }
-    .solution {
-      color: #2d6a4f; /* yeşil ton çözüm için */
-      font-weight: bold;
-      margin-top: 4px;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #555;
-    }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+    .date { font-size: 0.85em; color: #888; margin-bottom: 8px; }
+    .title { font-size: 1.3em; color: #8c5e3c; margin-bottom: 10px; }
+    .content { margin-bottom: 8px; }
+    .issue { color: #d46a6a; font-weight: bold; margin-top: 8px; }
+    .solution { color: #2d6a4f; font-weight: bold; margin-top: 4px; }
+    footer { margin-top: 40px; font-size: 0.9em; color: #555; }
   </style>
 </head>
 <body>
   <h1>Sevgi'nin CI/CD Blogu</h1>
 
+  <!-- 3 Mart -->
+  <div class="blog-card">
+    <p class="date">03 Mart 2026</p>
+    <p class="title">CI/CD Süreci: Jenkins Kurulum ve Pipeline</p>
+    <p class="content">Jenkins container’ını Docker ile çalıştırıp ilk pipeline’ı oluşturduk.</p>
+    <p class="issue">Hatalar / Karşılaşılan Zorluklar: Jenkins container başlangıçta çalışmadı, port çakışması oldu.</p>
+    <p class="solution">Düzeltmeler / Çözümler: Kullanılmayan bir port seçip container’ı yeniden başlattık.</p>
+  </div>
+
+  <!-- 4 Mart -->
+  <div class="blog-card">
+    <p class="date">04 Mart 2026</p>
+    <p class="title">CI/CD Süreci: GitHub Repository Bağlantısı</p>
+    <p class="content">Jenkins pipeline ile GitHub repository’den kod çektik ve build ettik.</p>
+    <p class="issue">Hatalar / Karşılaşılan Zorluklar: SSH key tanımlaması eksikti, Git pull başarısız oldu.</p>
+    <p class="solution">Düzeltmeler / Çözümler: Sunucuda SSH key oluşturup GitHub’a ekledik, pipeline tekrar çalıştı.</p>
+  </div>
+
+  <div class="blog-card">
+    <p class="date">04 Mart 2026</p>
+    <p class="title">CI/CD Süreci: Docker ve Jenkins Entegrasyonu</p>
+    <p class="content">Jenkins container’dan Docker container çalıştırmaya çalıştık.</p>
+    <p class="issue">Hatalar / Karşılaşılan Zorluklar: 'docker exec' hatası → container içinde docker CLI yoktu.</p>
+    <p class="solution">Düzeltmeler / Çözümler: Jenkins container’ını docker soket ile bağladık ve image’ı güncelledik.</p>
+  </div>
+
+  <!-- 5 Mart -->
   <div class="blog-card">
     <p class="date">05 Mart 2026</p>
-    <p class="title">CI/CD Süreci: Jenkins Pipeline</p>
-    <p class="content">Pipeline oluşturup GitHub’dan kod çektik ve build ettik.</p>
-    <p class="issue">Hatalar / Karşılaşılan Zorluklar: Bozuk karakterler çıktı.</p>
-    <p class="solution">Düzeltmeler / Çözümler: &lt;meta charset="UTF-8"&gt; ekledim, sorunu çözdüm.</p>
-  </div>
-
-  <div class="blog-card">
-    <p class="date">06 Mart 2026</p>
-    <p class="title">CI/CD Süreci: Docker Container</p>
-    <p class="content">Node.js uygulamasını Docker container’da çalıştırdım.</p>
-    <p class="issue">Hatalar / Karşılaşılan Zorluklar: 'docker exec' hatası, container içinde docker CLI yoktu.</p>
-    <p class="solution">Düzeltmeler / Çözümler: Image güncelledim ve sorunu çözdüm.</p>
-  </div>
-
-  <div class="blog-card">
-    <p class="date">07 Mart 2026</p>
-    <p class="title">CI/CD Süreci: GitHub Actions Workflow</p>
-    <p class="content">Otomatik build & deploy denedim.</p>
-    <p class="issue">Hatalar / Karşılaşılan Zorluklar: Yaml syntax hatası → workflow fail oldu.</p>
-    <p class="solution">Düzeltmeler / Çözümler: Syntax hatasını düzelttim, workflow çalıştı.</p>
+    <p class="title">CI/CD Süreci: Build ve Deploy</p>
+    <p class="content">Pipeline build edildi ve deploy işlemi başlatıldı.</p>
+    <p class="issue">Hatalar / Karşılaşılan Zorluklar: HTML dosyalarında bozuk karakterler görüldü (Türkçe karakterler).</p>
+    <p class="solution">Düzeltmeler / Çözümler: HTML dosyalarına &lt;meta charset="UTF-8"&gt; ekledik, sorunu çözdük.</p>
   </div>
 
   <footer>&copy; 2026 Sevgi Nur Köseoğlu | DevOps Yolculuğu</footer>
