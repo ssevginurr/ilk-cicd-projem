@@ -59,10 +59,21 @@ button.kotu { background-color: #d46a6a; color: white; position: relative; }
   animation: floatAnim 4s ease-in-out infinite;
   opacity: 0.5;
 }
+.heart-fly {
+  position: absolute;
+  font-size: 20px;
+  color: red;
+  pointer-events: none;
+  animation: flyUp 1s ease-out forwards;
+}
 @keyframes floatAnim {
   0% { transform: translateY(0) translateX(0); }
   50% { transform: translateY(-20px) translateX(10px); }
   100% { transform: translateY(0) translateX(0); }
+}
+@keyframes flyUp {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
 }
 </style>
 </head>
@@ -74,8 +85,10 @@ button.kotu { background-color: #d46a6a; color: white; position: relative; }
 <div class="anim-icon" style="top:200px; left:90%;">🐳</div>
 <div class="anim-icon" style="top:400px; left:50px;">🖥️</div>
 <div class="anim-icon" style="top:600px; left:85%;">💾</div>
+<div class="anim-icon" style="top:300px; left:30%;">🖱️</div>
+<div class="anim-icon" style="top:500px; left:70%;">🛠️</div>
 
-<!-- Örnek blog kartı -->
+<!-- 3 Mart -->
 <div class="blog-card">
   <p class="date">03 Mart 2026</p>
   <p class="title">CI/CD Süreci: Jenkins & Portainer & Nginx</p>
@@ -90,7 +103,35 @@ button.kotu { background-color: #d46a6a; color: white; position: relative; }
   </div>
 </div>
 
-<!-- Diğer kartlar buraya aynı şekilde eklenebilir -->
+<!-- 4 Mart -->
+<div class="blog-card">
+  <p class="date">04 Mart 2026</p>
+  <p class="title">CI/CD Süreci: GitHub Repository Bağlantısı</p>
+  <p class="content">Jenkins pipeline ile GitHub repository’den kod çektik ve build ettik.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: SSH key tanımlaması eksikti, Git pull başarısız oldu.</p>
+  <p class="solution">Düzeltmeler / Çözümler: Sunucuda SSH key oluşturup GitHub’a ekledik, pipeline tekrar çalıştı.</p>
+  <div class="button-container">
+    <span class="message-label">Yorumlar:</span>
+    <span class="message"></span>
+    <button class="guzel">Güzel</button>
+    <button class="kotu">Kötü</button>
+  </div>
+</div>
+
+<!-- 5 Mart -->
+<div class="blog-card">
+  <p class="date">05 Mart 2026</p>
+  <p class="title">CI/CD Süreci: Build & Deploy</p>
+  <p class="content">Pipeline build edildi ve deploy işlemi başlatıldı.</p>
+  <p class="issue">Hatalar / Karşılaşılan Zorluklar: HTML dosyalarında bozuk karakterler görüldü (Türkçe karakterler).</p>
+  <p class="solution">Düzeltmeler / Çözümler: HTML dosyalarına &lt;meta charset="UTF-8"&gt; ekledik, sorunu çözdük.</p>
+  <div class="button-container">
+    <span class="message-label">Yorumlar:</span>
+    <span class="message"></span>
+    <button class="guzel">Güzel</button>
+    <button class="kotu">Kötü</button>
+  </div>
+</div>
 
 <footer style="margin-top:40px; text-align:center; color:#bbb;">&copy; 2026 Sevgi Nur Köseoğlu | DevOps Yolculuğu</footer>
 
@@ -114,8 +155,20 @@ document.addEventListener("DOMContentLoaded", () => {
       kotuBtn.disabled = true;
     });
 
-    guzelBtn.addEventListener('click', () => {
-      message.innerHTML = '❤️ Biliyordum! Teşekkürler';
+    guzelBtn.addEventListener('click', (e) => {
+      if (!message.innerHTML) {
+        message.innerHTML = '❤️ Biliyordum! Teşekkürler';
+
+        // Kalp animasyonu
+        const heart = document.createElement('div');
+        heart.className = 'heart-fly';
+        const rect = guzelBtn.getBoundingClientRect();
+        heart.style.left = (rect.left - card.getBoundingClientRect().left + 20) + 'px';
+        heart.style.top = (rect.top - card.getBoundingClientRect().top - 20) + 'px';
+        heart.innerHTML = '❤️';
+        card.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 1000);
+      }
     });
   });
 });
